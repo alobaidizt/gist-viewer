@@ -1,0 +1,11 @@
+{
+  "name": "gist-viewer",
+  "version": "1.0.0",
+  "description": "Gist Viewer",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ziyad Al-Obaidi",
+  "license": "ISC"
+}
