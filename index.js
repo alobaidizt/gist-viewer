@@ -1,30 +1,16 @@
 const express = require('express')
+const { ApolloServer } = require('apollo-server-express');
+
+const typeDefs = require('./type-defs')
+const resolvers = require('./resolvers')
+
 const app = express()
 
-const {
-  getPublicGists,
-  getGist,
-} = require('./gist')
-const logger = require('./logger');
- 
-app
-  .get('/gist/list', async (req, res) => {
-    await getPublicGists('alobaidizt')
-      .then(data => res.send(data))
-      .catch(err => {
-        logger.error(err);
-        res.status(500).send(err)
-      });
-  })
-  .get('/gist/id/:id', async (req, res) => {
-    const id = req.params.id;
+const server = new ApolloServer({ typeDefs, resolvers });
+server.applyMiddleware({ app });
 
-    await getGist(id)
-      .then(data => res.send(data))
-      .catch(err => {
-        logger.error(err);
-        res.status(500).send(err)
-      });
-  })
+app.listen({ port: 4000 }, () =>
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+);
  
 app.listen(3000)
