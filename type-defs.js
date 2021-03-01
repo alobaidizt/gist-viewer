@@ -9,6 +9,7 @@ type Gist {
   id: ID!
   createdOn: Float!
   files: [GistFile]
+  favorite: Boolean
 }
 
 type User {
@@ -19,5 +20,10 @@ type User {
 type Query {
   user(username: String!): User
   gist(id: ID!): Gist
+  favoriteGists: [Gist]
+}
+
+type Mutation {
+    toggleGistFavorite(id: ID!): Boolean!
 }
 `;

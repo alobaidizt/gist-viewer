@@ -16,6 +16,7 @@
     "graphql": "^15.5.0",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
+    "postgres": "^1.0.2",
     "winston": "^3.3.3"
   }
 }

@@ -5,7 +5,7 @@ const logger = require('./logger');
 
 fetch.Promise = Bluebird;
 
-const getPublicGists = (username) => {
+const fetchPublicGists = (username) => {
   return fetch(`https://api.github.com/users/${username}/gists`, {
     method: 'GET',
     headers: {
@@ -16,7 +16,7 @@ const getPublicGists = (username) => {
     .catch(err => logger.error(err));
 }
 
-const getGist = (id) => {
+const fetchGist = (id) => {
   return fetch(`https://api.github.com/gists/${id}`, {
     method: 'GET',
     headers: {
@@ -28,6 +28,6 @@ const getGist = (id) => {
 }
 
 module.exports = {
-  getPublicGists,
-  getGist,
+  fetchPublicGists: fetchPublicGists,
+  fetchGist: fetchGist,
 }

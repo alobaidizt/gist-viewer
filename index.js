@@ -3,6 +3,9 @@ const { ApolloServer } = require('apollo-server-express');
 
 const typeDefs = require('./type-defs')
 const resolvers = require('./resolvers')
+const { initDB } = require('./sql-engine');
+
+initDB()
 
 const app = express()
 
